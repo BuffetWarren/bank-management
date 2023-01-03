@@ -15,6 +15,12 @@ public class Transaction implements Comparable<Transaction>{
 
 
     public Transaction(TransactionType type, long timestamp, String id, double amount) {
+        if(id == null || id.isBlank() || type == null){
+            throw new IllegalArgumentException("INVALID PARAMS");
+        }
+        if(amount <= 0){
+            throw new IllegalArgumentException("AMOUNT CAN'T BE NEGATIVE");
+        }
         this.type = type;
         this.timestamp = timestamp;
         this.id = id;
